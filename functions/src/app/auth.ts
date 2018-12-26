@@ -3,7 +3,6 @@ import { stripe, db, stripeClientId } from './config';
 import { createCustomer } from './helpers';
 
 export const createStripeCustomer = functions.auth
-
     .user().onCreate((user, context) => {
 
         const userRef = db.collection('users').doc(user.uid);

@@ -47,14 +47,14 @@ export const auth   = admin.auth();
 import * as Stripe from 'stripe'; 
 
 // Possible bug with v1.0 and firebase-tools CLI
-// export const stripeSecret       = functions.config().stripe.secret;
-// export const stripePublishable  = functions.config().stripe.publishable;
-// export const stripeClientId     = functions.config().stripe.clientid; // only used for stripe connect
+ export const stripeSecret       = functions.config().stripe.secret;
+ export const stripePublishable  = functions.config().stripe.publishable;
+ export const stripeClientId     = functions.config().stripe.clientid; // only used for stripe connect
 
 
-export const stripeSecret       = serviceAccount.stripe.secret;
-export const stripePublishable  = serviceAccount.stripe.publishable;
-export const stripeClientId     = serviceAccount.stripe.clientid; 
+//export const stripeSecret       = serviceAccount.stripe.secret;
+//export const stripePublishable  = serviceAccount.stripe.publishable;
+//export const stripeClientId     = serviceAccount.stripe.clientid;
 
 export const stripe = new Stripe(stripeSecret);
 
