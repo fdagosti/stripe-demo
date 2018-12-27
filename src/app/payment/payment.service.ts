@@ -37,7 +37,7 @@ export class PaymentService {
   // Get a list of charges
   getCharges(): Observable<Charge[]> {
     return this.fun.httpsCallable('getCharges')({}).pipe(
-      map(res => res.data)
+      map(res => res.data),
       tap(data => console.log("1 data ",data)),
     );
   }
@@ -72,15 +72,12 @@ console.log("createcharge card = ",card)
 
   // Attaches subscription to user (Stripe will charge the source)
   attachSubscription(sourceId: string, planId: string): Observable<SubscriptionPlan> {
-    const url = `${this.api}/subscriptions`;
 
     return this.fun.httpsCallable('attachSubscription')({ sourceId, planId });
   }
 
   // Cancels subscription
   cancelSubscription(planId: string): Observable<SubscriptionPlan> {
-    const url = `${this.api}/subscriptions/cancel`;
-
     return this.fun.httpsCallable('cancelSubscription')({ planId });
   }
 

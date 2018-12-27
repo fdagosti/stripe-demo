@@ -28,7 +28,7 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
   @Output() stripeResult = new EventEmitter<Charge | Source>();
 
   // Result used locacally to display status.
-  result: Charge | Source;
+  result: Charge | Source | any;
 
   // The Stripe Elements Card
   @ViewChild('cardElement') cardElement: ElementRef;

@@ -37,6 +37,21 @@ export const createCharge = functions.https.onCall((data, context ) =>{
 })
 
 
+export const attachSubscription = functions.https.onCall((data, context ) =>{
+  const userId   = context.auth.uid;
+  const sourceId = data.sourceId;
+  const planId   = data.planId;
+
+  return helpers.createSubscription(userId, sourceId, planId);
+});
+
+export const cancelSubscription = functions.https.onCall((data, context ) =>{
+  const userId   = context.auth.uid;
+  const planId   = data.planId;
+
+  return helpers.cancelSubscription(userId, planId);
+});
+
 
 // POST subscriptions (creates subscription on user account)
 app.post('/subscriptions', (req, res) => {

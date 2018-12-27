@@ -14,6 +14,9 @@ export const getCharges = api.getCharges;
 export const getCustomer = api.getCustomer;
 export const attachSource = api.attachSource;
 export const createCharge = api.createCharge;
+export const attachSubscription = api.attachSubscription;
+export const cancelSubscription = api.cancelSubscription;
+
 
 // Webhook Functions
 //export const recurringPaymentWebhook = webhooks.recurringPaymentWebhook;

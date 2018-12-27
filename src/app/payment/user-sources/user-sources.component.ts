@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { PaymentService } from '../payment.service';
 import { Source, Customer } from '../models';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'user-sources',

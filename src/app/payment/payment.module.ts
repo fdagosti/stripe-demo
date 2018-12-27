@@ -5,9 +5,10 @@ import {SharedModule} from '../shared/shared.module';
 import { UserSourcesComponent } from './user-sources/user-sources.component';
 import { UserSubscriptionsComponent } from './user-subscriptions/user-subscriptions.component';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
+import { SubscriptionPlanComponent } from './subscription-plan/subscription-plan.component';
 
 @NgModule({
-  declarations: [UserChargesComponent, UserSourcesComponent, UserSubscriptionsComponent, PaymentFormComponent],
+  declarations: [UserChargesComponent, UserSourcesComponent, UserSubscriptionsComponent, PaymentFormComponent, SubscriptionPlanComponent],
   imports: [
     CommonModule,
     SharedModule
@@ -16,7 +17,8 @@ import { PaymentFormComponent } from './payment-form/payment-form.component';
     PaymentFormComponent,
     UserChargesComponent,
     UserSourcesComponent,
-    UserSubscriptionsComponent
+    UserSubscriptionsComponent,
+    SubscriptionPlanComponent
   ],
 })
 export class PaymentModule { }
