@@ -7,6 +7,8 @@ functions/credentials.json
 functions/src/credentials.json
 NOTES.md
 
+.runtimeconfig.json
+firebase-debug.log
 
 # compiled output
 /dist

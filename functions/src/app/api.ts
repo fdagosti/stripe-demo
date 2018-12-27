@@ -3,6 +3,17 @@ import * as helpers from './helpers';
 import * as connect from './connect';
 import { app } from './config';
 
+export const getCharges = functions.https.onCall((data, context) => {
+  const userId = context.auth.uid;
+  return helpers.getUserCharges(userId)
+});
+
+export const getCustomer = functions.https.onCall((data, context) => {
+  const userId   = context.auth.uid;
+  return  helpers.getCustomer(userId);
+});
+
+
 // POST Charge
 app.post('/charges', (req, res) => {
 
@@ -12,7 +23,7 @@ app.post('/charges', (req, res) => {
     const currency = req.body.currency;
 
     const promise = helpers.createCharge(userId, sourceId, amount, currency)
-    defaultHandler(promise, res)
+    return promise.then(data => console.log("promise data ",data));
 });
 
 // GET User Charges
@@ -77,4 +88,4 @@ function defaultHandler(promise: Promise<any>, res: any): void {
         .catch(err => res.status(400).send(err) )
 }
     
-export const api = functions.https.onRequest(app);
+//export const api = functions.https.onRequest(app);
