@@ -13,49 +13,30 @@ export const getCustomer = functions.https.onCall((data, context) => {
   return  helpers.getCustomer(userId);
 });
 
+export const attachSource = functions.https.onCall((data, context) => {
+  console.log("data ",data);
 
-// POST Charge
-app.post('/charges', (req, res) => {
+  const userId   = context.auth.uid;
 
-    const userId   = req.user.uid;
-    const sourceId = req.body.sourceId;
-    const amount   = req.body.amount;
-    const currency = req.body.currency;
+  const sourceId  = data.sourceId;
 
-    const promise = helpers.createCharge(userId, sourceId, amount, currency)
-    return promise.then(data => console.log("promise data ",data));
+console.log("source id ",sourceId)
+
+  return helpers.attachSource(userId, sourceId)
 });
 
-// GET User Charges
-app.get('/charges', (req, res) => {
-    
-    const userId   = req.user.uid;
+export const createCharge = functions.https.onCall((data, context ) =>{
+  const userId   = context.auth.uid;
+  const sourceId = data.sourceId;
+  const amount   = data.amount;
+  const currency = data.currency;
 
-    const promise = helpers.getUserCharges(userId)
-    defaultHandler(promise, res)
-});
+  console.log("create Charge ",sourceId, amount, currency)
+
+  return helpers.createCharge(userId, sourceId, amount, currency).catch(error => {throw new functions.https.HttpsError('invalid-argument',error)})
+})
 
 
-// POST sources
-app.post('/sources', (req, res) => {
-    
-    const userId    = req.user.uid;
-    const sourceId  = req.body.sourceId;
-
-    const promise = helpers.attachSource(userId, sourceId)
-    defaultHandler(promise, res)
-    
-});
-
-// GET customer (includes source and subscription data)
-app.get('/customer', (req, res) => {
-    
-    const userId   = req.user.uid;
-
-    const promise = helpers.getCustomer(userId)
-    defaultHandler(promise, res)
-    
-});
 
 // POST subscriptions (creates subscription on user account)
 app.post('/subscriptions', (req, res) => {

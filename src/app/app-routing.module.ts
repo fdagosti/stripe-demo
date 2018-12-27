@@ -3,11 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import {AuthGuard} from './core/auth.guard';
 import {StripeDashboardComponent} from './demo/stripe-dashboard/stripe-dashboard.component';
 import {ReadMeComponent} from './demo/read-me/read-me.component';
+import {SaveCardComponent} from './demo/save-card/save-card.component';
+import {ChargeCardComponent} from './demo/charge-card/charge-card.component';
 
 const routes: Routes = [
   { path: '', component: ReadMeComponent},
-  //{ path: 'charge', component: ChargeCardComponent, canActivate: [AuthGuard]  },
-  //{ path: 'save-card', component: SaveCardComponent, canActivate: [AuthGuard]  },
+  { path: 'charge', component: ChargeCardComponent, canActivate: [AuthGuard]  },
+  { path: 'save-card', component: SaveCardComponent, canActivate: [AuthGuard]  },
   //{ path: 'subscription', component: SubscriptionPageComponent, canActivate: [AuthGuard]  },
   { path: 'dashboard', component: StripeDashboardComponent, canActivate: [AuthGuard]  },
 

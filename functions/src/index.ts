@@ -12,6 +12,8 @@ export const createStripeCustomer    = auth.createStripeCustomer;
 
 export const getCharges = api.getCharges;
 export const getCustomer = api.getCustomer;
+export const attachSource = api.attachSource;
+export const createCharge = api.createCharge;
 
 // Webhook Functions
 //export const recurringPaymentWebhook = webhooks.recurringPaymentWebhook;

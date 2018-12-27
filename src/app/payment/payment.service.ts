@@ -47,8 +47,7 @@ export class PaymentService {
 
 
   createCharge(card: any, amount: number): Observable<Charge> {
-    const url = `${this.api}/charges/`;
-
+console.log("createcharge card = ",card)
     return from<Source>( this.stripe.createSource(card) ).pipe(
       switchMap(data => {
         return this.fun.httpsCallable('createCharge')({ amount, sourceId: data.source.id });
@@ -58,11 +57,12 @@ export class PaymentService {
 
   // Saves a payment source to the user account that can be charged later
   attachSource(card: any): Observable<Source> {
-    const url = `${this.api}/sources/`;
 
     return from<Source>( this.stripe.createSource(card) ).pipe(
       switchMap(data => {
-        return this.fun.httpsCallable('attachSource')({ sourceId: data.source.id })
+        return this.fun.httpsCallable('attachSource')({ sourceId: data.source.id }).pipe(
+          tap(data => console.log("create source ",data))
+        )
       })
     )
   }
