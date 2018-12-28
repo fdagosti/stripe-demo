@@ -53,30 +53,6 @@ export const cancelSubscription = functions.https.onCall((data, context ) =>{
 });
 
 
-// POST subscriptions (creates subscription on user account)
-app.post('/subscriptions', (req, res) => {
-    
-    const userId   = req.user.uid;
-    const sourceId = req.body.sourceId;
-    const planId   = req.body.planId;
-
-    const promise = helpers.createSubscription(userId, sourceId, planId);
-
-    defaultHandler(promise, res)
-});
-
-// PUT subscriptions (cancels subscription)
-app.put('/subscriptions/cancel', (req, res) => {
-    
-    const userId   = req.user.uid;
-    const planId   = req.body.planId;
-
-    const promise = helpers.cancelSubscription(userId, planId);
-
-    defaultHandler(promise, res)
-});
-
-
 // Default handling of response
 function defaultHandler(promise: Promise<any>, res: any): void {
     promise

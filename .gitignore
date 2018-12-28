@@ -9,7 +9,7 @@ NOTES.md
 
 .runtimeconfig.json
 firebase-debug.log
-
+.firebase
 # compiled output
 /dist
 /tmp
