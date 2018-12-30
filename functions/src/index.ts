@@ -1,7 +1,7 @@
 require('./app/config');
 import * as auth from './app/auth';
 import * as webhooks from './app/webhooks';
-//import * as connect from './app/connect';
+import * as connect from './app/connect';
 import * as api from './app/api';
 
 // Auth Functions
@@ -20,8 +20,8 @@ export const cancelSubscription = api.cancelSubscription;
 export const recurringPaymentWebhook = webhooks.recurringPaymentWebhook;
 
 // Connect Functions
-//export const stripeRedirect = connect.redirect;
-//export const oauthCallback  = connect.callback;
+export const stripeRedirect = connect.redirect;
+export const oauthCallback  = connect.callback;
 
 
 

@@ -72,13 +72,12 @@ export async function createCharge(userId: string, sourceId: string, amount: num
     const customerId = user.stripeCustomerId;
 
     const card       = await attachSource(userId, sourceId)
-    
-    return await stripe.charges.create({
+    return stripe.charges.create({
         amount: amount,
         currency: currency || 'usd',
         customer: customerId,
-        source: sourceId
-    })
+        source: card.id
+    });
 }
 
 

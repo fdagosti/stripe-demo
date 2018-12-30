@@ -6,6 +6,8 @@ import {ReadMeComponent} from './demo/read-me/read-me.component';
 import {SaveCardComponent} from './demo/save-card/save-card.component';
 import {ChargeCardComponent} from './demo/charge-card/charge-card.component';
 import {SubscriptionPageComponent} from './demo/subscription-page/subscription-page.component';
+import {ConnectRedirectComponent} from './payment/connect-redirect/connect-redirect.component';
+import {ConnectPageComponent} from './demo/connect-page/connect-page.component';
 
 const routes: Routes = [
   { path: '', component: ReadMeComponent},
@@ -15,8 +17,8 @@ const routes: Routes = [
   { path: 'dashboard', component: StripeDashboardComponent, canActivate: [AuthGuard]  },
 
   // Stripe Connect
-  //{ path: 'connect', component: ConnectPageComponent  },
-  //{ path: 'redirect', component: ConnectRedirectComponent }
+  { path: 'connect', component: ConnectPageComponent  },
+  { path: 'redirect', component: ConnectRedirectComponent }
 ];
 
 @NgModule({

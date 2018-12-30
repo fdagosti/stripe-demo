@@ -6,9 +6,10 @@ import {PaymentModule} from '../payment/payment.module';
 import { SaveCardComponent } from './save-card/save-card.component';
 import { ChargeCardComponent } from './charge-card/charge-card.component';
 import { SubscriptionPageComponent } from './subscription-page/subscription-page.component';
+import { ConnectPageComponent } from './connect-page/connect-page.component';
 
 @NgModule({
-  declarations: [StripeDashboardComponent, ReadMeComponent, SaveCardComponent, ChargeCardComponent, SubscriptionPageComponent],
+  declarations: [StripeDashboardComponent, ReadMeComponent, SaveCardComponent, ChargeCardComponent, SubscriptionPageComponent, ConnectPageComponent],
   imports: [
     CommonModule,
     PaymentModule

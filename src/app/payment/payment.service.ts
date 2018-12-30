@@ -29,16 +29,13 @@ export class PaymentService {
 
   // Get customer data
   getCustomer(): Observable<Customer> {
-    return this.fun.httpsCallable('getCustomer')({}).pipe(
-      tap(data => console.log("11 data ",data)),
-    );
+    return this.fun.httpsCallable('getCustomer')({});
   }
 
   // Get a list of charges
   getCharges(): Observable<Charge[]> {
     return this.fun.httpsCallable('getCharges')({}).pipe(
       map(res => res.data),
-      tap(data => console.log("1 data ",data)),
     );
   }
 
@@ -47,13 +44,28 @@ export class PaymentService {
 
 
   createCharge(card: any, amount: number): Observable<Charge> {
-console.log("createcharge card = ",card)
     return from<Source>( this.stripe.createSource(card) ).pipe(
       switchMap(data => {
-        return this.fun.httpsCallable('createCharge')({ amount, sourceId: data.source.id });
+        return this.createChargeFromSourceId(data.source.id, amount );
       })
     )
   }
+
+  createChargeFromSourceId(sourceId: any, amount: number): Observable<Charge> {
+    return this.fun.httpsCallable('createCharge')({ amount, sourceId: sourceId });
+  }
+
+  checkoutRedirect(){
+    return this.stripe.redirectToCheckout({
+      items: [],
+      successUrl: 'http://localhost:4200',
+      cancelUrl: 'http://localhost:4200',
+    }).then(function (result) {
+      console.log("checkout redirect result ",result)
+    });
+  }
+
+
 
   // Saves a payment source to the user account that can be charged later
   attachSource(card: any): Observable<Source> {

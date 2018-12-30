@@ -1,0 +1,13 @@
+<button [disabled]="loading"
+        [class.is-loading]="loading" (click)="showExpressWindow()"  class="button is-link">
+  <i class="fa fa-credit-card fa-lg"></i> &nbsp; Pay with Checkout
+</button>
+<br>
+<div *ngIf="result" class="notification is-success">
+  {{ result.id }} has a status of {{ result.status }} for {{ result.amount | stripe | currency }}
+</div>
+
+<!-- If error, show the user the raw error msg from Stripe -->
+<div *ngIf="error" class="notification is-danger">
+  {{ error }}
+</div>

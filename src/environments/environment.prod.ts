@@ -8,6 +8,6 @@ export const environment = {
     storageBucket: "pakou-stripedemo.appspot.com",
     messagingSenderId: "194559234532"
   },
-  functionsURL: ' ???',
+  functionsURL: 'https://us-central1-pakou-stripedemo.cloudfunctions.net',
   stripePublishable: 'pk_test_eYclOb2GE2CHR25o3MuppgxN'
 };

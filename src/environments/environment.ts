@@ -12,7 +12,7 @@ export const environment = {
     storageBucket: "pakou-stripedemo.appspot.com",
     messagingSenderId: "194559234532"
   },
-  functionsURL: ' http://localhost:5000/stripe-elements/us-central1',
+  functionsURL: ' http://localhost:5000/pakou-stripedemo/us-central1',
   stripePublishable: 'pk_test_eYclOb2GE2CHR25o3MuppgxN'
 };
 

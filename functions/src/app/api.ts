@@ -14,14 +14,8 @@ export const getCustomer = functions.https.onCall((data, context) => {
 });
 
 export const attachSource = functions.https.onCall((data, context) => {
-  console.log("data ",data);
-
   const userId   = context.auth.uid;
-
   const sourceId  = data.sourceId;
-
-console.log("source id ",sourceId)
-
   return helpers.attachSource(userId, sourceId)
 });
 
@@ -31,9 +25,8 @@ export const createCharge = functions.https.onCall((data, context ) =>{
   const amount   = data.amount;
   const currency = data.currency;
 
-  console.log("create Charge ",sourceId, amount, currency)
-
-  return helpers.createCharge(userId, sourceId, amount, currency).catch(error => {throw new functions.https.HttpsError('invalid-argument',error)})
+  return helpers.createCharge(userId, sourceId, amount, currency)
+    .catch(error => {throw new functions.https.HttpsError('invalid-argument',error)})
 })
 
 
